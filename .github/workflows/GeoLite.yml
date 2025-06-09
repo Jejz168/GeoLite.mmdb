@@ -38,7 +38,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.API_TOKEN }}
       with:
-        tag_name: ${{ env.TAG_NAME }}
+        name: ${{ env.TAG_NAME }} GeoLite
+        tag_name: GeoLite
         files: upload/*.mmdb
         body: |
           ## 🌐 GeoLite 数据库发布
@@ -48,16 +49,8 @@ jobs:
           - 用途：用于地理位置识别（如 Clash / Mihomo IP 匹配）
 
           📌 **说明：**
-          此数据库适用于基于 GeoIP 的规则匹配，如地区屏蔽、节点分流等用途。
-
-    - name: Remove old Releases
-      uses: dev-drprasad/delete-older-releases@master
-      with:
-        keep_latest: 2
-        delete_tags: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.API_TOKEN }}
-
+          此数据库适用于基于 GeoIP 的规则匹配，如地区屏蔽、节点分流等
+          
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@main
       with:
